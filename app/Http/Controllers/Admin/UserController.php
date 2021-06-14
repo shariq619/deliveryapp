@@ -54,7 +54,7 @@ class UserController extends Controller
         ]);
         $user = AdminModel::create($data);
 
-        AdminModel::$guard_name = 'admin';
+        //AdminModel::$guard_name = 'admin';
         // Assign roles
         $roles = $request->input('roles');
         $user->assignRole($roles);

@@ -52,6 +52,9 @@ class RoleController extends Controller
             'name' => 'required'
         ]);
         $data['guard_name'] = 'admin';
+
+
+
         $role = Role::create($data);
 
         //
