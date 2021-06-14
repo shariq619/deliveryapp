@@ -13,6 +13,7 @@ class RoleController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth:admin');
         $permission = Role::all();
         // Sharing is caring
         View::share('total', $permission->count());

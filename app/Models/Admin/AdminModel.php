@@ -3,12 +3,14 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 class AdminModel extends Authenticatable
 {
+    use SoftDeletes;
     use Notifiable;
     use HasRoles;
     protected $guarded = "admin";
@@ -21,4 +23,8 @@ class AdminModel extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function scopeNoSuperAdmin(){
+        return $this->whereNotIn('id',[1]);
+    }
 }

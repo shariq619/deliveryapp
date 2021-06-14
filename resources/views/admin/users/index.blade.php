@@ -39,6 +39,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Role</th>
                                 <th class="text-center">Action</th>
                             </tr>
                             </thead>
@@ -47,6 +48,7 @@
                                 <tr>
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>
+                                    <td>@foreach($user->roles as $roles) {{ucfirst($roles->name)}} @endforeach</td>
                                     <td class="text-center">
                                         <a class="btn btn-xs btn-primary"
                                            href="{{route('users.show',$user->id)}}">

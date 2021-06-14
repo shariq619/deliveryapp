@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $users = AdminModel::all();
+        $this->middleware('auth:admin');
+        $users = AdminModel::nosuperadmin()->get();
         // Sharing is caring
         View::share('total', $users->count());
     }
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = AdminModel::orderByDesc('id')->get();
+        $users = AdminModel::nosuperadmin()->orderByDesc('id')->get();
         return view('admin.users.index',compact('users'));
     }
 
@@ -35,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
+        $roles = Role::whereNotIn('name',['super-admin'])->get();
         return view('admin.users.create',compact('roles'));
     }
 
@@ -52,6 +53,7 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required|min:6|confirmed'
         ]);
+
         $user = AdminModel::create($data);
 
         //AdminModel::$guard_name = 'admin';

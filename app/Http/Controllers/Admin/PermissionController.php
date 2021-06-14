@@ -10,8 +10,10 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+
     public function __construct()
     {
+        $this->middleware('auth:admin');
         $permission = Permission::all();
         // Sharing is caring
         View::share('total', $permission->count());

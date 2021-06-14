@@ -23,22 +23,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::namespace("Admin")->prefix('admin')->group(function () {
 
-
     Route::get('/dashboard', 'AdminHomeController@index')->name('admin.home');
 
-    Route::get('/test', function () {
-        dump(auth()->guard('admin')->user()->roles->pluck('name'));
-    });
-
-
-
-    //Route::group(['middleware' => ['role:super']], function () {
-
-        Route::resource('permissions', 'PermissionController');
-        Route::resource('roles', 'RoleController');
-        Route::resource('users', 'UserController');
-
-    //});
+    Route::resource('permissions', 'PermissionController')->middleware('role:super-admin');
+    Route::resource('roles', 'RoleController')->middleware('role:super-admin');
+    Route::resource('users', 'UserController')->middleware('role:super-admin|admin');
 
     Route::namespace('Auth')->group(function () {
         Route::get('/login', 'AdminLoginController@showLoginForm')->name('admin.login');
