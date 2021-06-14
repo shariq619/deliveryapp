@@ -13,14 +13,24 @@ class AdminsTableSeeder extends Seeder
     {
         \App\Models\Admin\AdminModel::insert([
             [
-                'name' => 'admin',
-                'email' => 'admin@admin.com',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'name' => 'Super Admin',
+                'email' => 'superadmin@superadmin.com',
+                'password' => '$2y$12$eKkGhWk1fug0Ni5Q7byJKOIggDYg7dZi6roHs5tkveUVlrhd6knSq', // 11111111
             ],
             [
-                'name' => 'editor',
-                'email' => 'editor@editor.com',
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => '$2y$12$eKkGhWk1fug0Ni5Q7byJKOIggDYg7dZi6roHs5tkveUVlrhd6knSq', // 11111111
+            ],
+            [
+                'name' => 'Merchant',
+                'email' => 'merchant@merchant.com',
+                'password' => '$2y$12$eKkGhWk1fug0Ni5Q7byJKOIggDYg7dZi6roHs5tkveUVlrhd6knSq', // 11111111
+            ],
+            [
+                'name' => 'Driver',
+                'email' => 'driver@driver.com',
+                'password' => '$2y$12$eKkGhWk1fug0Ni5Q7byJKOIggDYg7dZi6roHs5tkveUVlrhd6knSq', // 11111111
             ],
         ]);
     }
