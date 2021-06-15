@@ -12,39 +12,29 @@
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Edit User
+                            Edit Category
                         </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form role="form" action="{{route('users.update',$user->id)}}" method="post">
+                        <form role="form" action="{{route('categories.update',$categories->id)}}" method="post">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name<code>*</code></label>
-                                    <input type="text" class="form-control" name="name" value="{{$user->name}}" id="name" placeholder="Enter Name">
+                                    <input type="text" class="form-control" name="name" value="{{$categories->name}}" id="name" placeholder="Enter Name">
                                     @error('name')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label>Roles</label>
-                                    <select class="select2" name="roles[]" multiple="multiple" data-placeholder="Select a Role"
-                                            style="width: 100%;">
-                                        @forelse($roles as $role)
-                                            <option value="{{$role->id}}" {{(  in_array($role->id, $user->roles->pluck('id')->toArray() ) ) ? "selected" : ""   }}>{{$role->name}}</option>
-                                        @empty
-                                        @endforelse
-                                    </select>
-                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Update</button>
-                                <a href="{{route('users.index')}}"  class="btn btn-secondary">Back</a>
+                                <a href="{{route('categories.index')}}"  class="btn btn-secondary">Back</a>
                             </div>
                         </form>
                     </div>

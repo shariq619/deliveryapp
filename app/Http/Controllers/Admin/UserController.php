@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AdminModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Role;
 
@@ -54,6 +55,8 @@ class UserController extends Controller
             'password' => 'required|min:6|confirmed'
         ]);
 
+        $data['password'] = Hash::make($data['password']);
+
         $user = AdminModel::create($data);
 
         //AdminModel::$guard_name = 'admin';
@@ -85,7 +88,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = AdminModel::find($id);
-        return view('admin.users.edit',compact('user'));
+        $roles = Role::whereNotIn('name',['super-admin'])->get();
+        return view('admin.users.edit',compact('user','roles'));
     }
 
     /**
@@ -100,8 +104,12 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required'
         ]);
-        $role = AdminModel::find($id);
-        $role->update($data);
+        $user = AdminModel::find($id);
+        $user->update($data);
+
+        $roles = $request->input('roles');
+        $user->syncRoles($roles);
+
         return redirect()->route('users.index')->with('message', 'User Updated Successfully');
     }
 

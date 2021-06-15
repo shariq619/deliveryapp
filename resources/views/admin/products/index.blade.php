@@ -8,7 +8,7 @@
                     <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total Users</span>
+                        <span class="info-box-text">Total Products</span>
                         <span class="info-box-number">{{$total}}</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -26,10 +26,10 @@
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title float-right">
-                            <a href="{{route('users.create')}}" class="btn btn-primary">Add User</a>
+                            <a href="{{route('products.create')}}" class="btn btn-primary">Add Product</a>
                         </h3>
                         <h3 class="card-title float-left">
-                            Users
+                            Products
                         </h3>
                     </div>
                     <!-- /.card-header -->
@@ -37,28 +37,28 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
-                                <th>Role</th>
+                                <th>Category</th>
+                                <th>Price</th>
                                 <th class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($users as $user)
+                            @forelse($products as $product)
                                 <tr>
-                                    <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>
-                                    <td>@foreach($user->roles as $roles) <span class="badge badge-secondary"> {{ucfirst($roles->name)}} </span> @endforeach</td>
+                                    <td>{{$product->name}}</td>
+                                    <td>@foreach($product->categories as $products) <span class="badge badge-secondary"> {{ucfirst($products->name)}} </span> @endforeach</td>
+                                    <td>{{$product->price}}</td>
                                     <td class="text-center">
                                         {{--<a class="btn btn-xs btn-primary"
-                                           href="{{route('users.show',$user->id)}}">
+                                           href="{{route('products.show',$product->id)}}">
                                             View
                                         </a>--}}
                                         <a class="btn btn-xs btn-info"
-                                           href="{{route('users.edit',$user->id)}}">
+                                           href="{{route('products.edit',$product->id)}}">
                                             Edit
                                         </a>
-                                        <form action="{{route('users.destroy',$user->id)}}" method="POST"
+                                        <form action="{{route('products.destroy',$product->id)}}" method="POST"
                                               onsubmit="return confirm('Are you sure?');"
                                               style="display: inline-block;">
                                             @method('DELETE')
@@ -69,7 +69,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="text-center">No Users Found!</td>
+                                    <td colspan="4" class="text-center">No Products Found!</td>
                                 </tr>
                             @endforelse
                             </tbody>

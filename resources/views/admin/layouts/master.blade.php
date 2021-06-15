@@ -89,6 +89,23 @@
                             <p>Users</p>
                         </a>
                     </li>
+
+
+                    <li class="nav-item">
+                        <a href="{{route('categories.index')}}"
+                           class="nav-link {{ (request()->is('admin/categories*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Categories</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('products.index')}}"
+                           class="nav-link {{ (request()->is('admin/products*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Products</p>
+                        </a>
+                    </li>
                     @endrole
 
 

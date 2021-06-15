@@ -29,10 +29,17 @@ Route::namespace("Admin")->prefix('admin')->group(function () {
     Route::resource('roles', 'RoleController')->middleware('role:super-admin');
     Route::resource('users', 'UserController')->middleware('role:super-admin|admin');
 
+    Route::resource('products', 'ProductController');
+    Route::resource('categories', 'CategoryController');
+
     Route::namespace('Auth')->group(function () {
         Route::get('/login', 'AdminLoginController@showLoginForm')->name('admin.login');
         Route::post('/login', 'AdminLoginController@login');
         Route::post('/logout', 'AdminLoginController@logout')->name('admin.logout');
     });
+
+
+
+
 
 });

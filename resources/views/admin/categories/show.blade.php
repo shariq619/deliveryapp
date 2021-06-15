@@ -7,7 +7,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Show User
+                            Show Category
                         </h3>
                     </div>
                     <!-- /.card-header -->
@@ -17,29 +17,20 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 10px">ID</th>
-                                    <th>{{$user->id}}</th>
-
+                                    <th>{{$category->id}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>Name</td>
-                                    <td>{{$user->name}}</td>
-
+                                    <td>{{$category->name}}</td>
                                 </tr>
-
-                                <tr>
-                                    <td>Role</td>
-                                    <td>@foreach($user->roles as $roles) {{ucfirst($roles->name)}} @endforeach</td>
-                                </tr>
-
-
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <a href="{{route('users.index')}}" class="btn btn-secondary">Back</a>
+                            <a href="{{route('categories.index')}}" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
                     <!-- /.card-body -->
