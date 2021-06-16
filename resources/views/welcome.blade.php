@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Laravel</title>
+    <title>Shop</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -84,7 +84,18 @@
         </div>
     @endif
 
-    <div class="content">
+    <div class="container">
+
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <input type="text" id="search" class="form-control" placeholder="Search">
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+
 
     </div>
 </div>
