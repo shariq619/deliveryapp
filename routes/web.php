@@ -25,6 +25,9 @@ Route::post('/login/user', 'FrontAuthController@check_login')->name('login.check
 
 Route::post('/register/user', 'FrontAuthController@store')->name('register.store');
 
+
+Route::get('/chat','MessageController@index')->name('show.chat');
+
 Route::namespace("Admin")->prefix('admin')->group(function () {
 
     Route::get('/dashboard', 'AdminHomeController@index')->name('admin.home');
